@@ -1,0 +1,112 @@
+<div class="container mb-5">
+    <div class="row">
+
+        <div class="col-md-3"></div>
+
+        <div class="col-md-6">
+
+            <div class="bg-secondary-theme p-5 shadow-effect">
+                <div class="card-body">
+                    <div class="text-center">
+                        <h3 class="text-theme-primary"> Login </h3>
+                        <p>Please login to your admin account to post a new blog post</p>
+                    </div>
+                    <!-- 
+                    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
+
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email" name="email" #Email="ngModel"
+                                email ngModel required [ngClass]="{'is-invalid': Email.touched && Email.invalid}">
+
+
+                            <div class="alert alert-danger" *ngIf="Email.touched && Email.invalid">
+                                <div *ngIf="Email.errors?.['required']"> Email Cannot be Empty </div>
+                                <div *ngIf="Email.errors?.['email']"> Please Enter a Valid Email Address </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" class="form-control"
+                                placeholder="Password" name="password" #Password="ngModel" ngModel required
+                                [ngClass]="{'is-invalid': Password.touched && Password.invalid}">
+
+                            <button type="button" class="btn btn-sm position-absolute"
+                                (click)="togglePassword()" style="top: 62%; right: 86px; transform: translateY(-50%);">
+                                <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+                            </button>
+
+                            <div class="alert alert-danger" *ngIf="Password.touched && Password.invalid"> Password
+                                Cannot be
+                                Empty </div>
+
+                        </div>
+
+                        <button class="btn-block btn-theme" [disabled]="loginForm.invalid"> Login </button>
+                    </form> -->
+
+
+
+                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                        <!-- Email -->
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email" formControlName="email"
+                                [ngClass]="{'is-invalid': fc['email'].touched && fc['email'].invalid}">
+                            <div class="alert alert-danger small" *ngIf="fc['email'].touched && fc['email'].errors">
+                                <div *ngIf="fc['email'].errors['required']">Email is required</div>
+                                <div *ngIf="fc['email'].errors['email']">Email must be valid</div>
+                            </div>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Password"
+                                formControlName="password"
+                                [ngClass]="{'is-invalid': fc['password'].touched && fc['password'].invalid}">
+
+                            <div class="alert alert-danger small"
+                                *ngIf="fc['password'].touched && fc['password'].errors">
+                                <div *ngIf="fc['password'].errors['required']">&#8226; Password is required</div>
+                                <div *ngIf="fc['password'].errors['minlength']">&#8226; Password must be at least 10
+                                    characters
+                                </div>
+                                <div *ngIf="fc['password'].errors['maxlength']">&#8226; Password must be at most 24
+                                    characters
+                                </div>
+                                <div *ngIf="fc['password'].errors['noSpaces']">&#8226; Password must not contain spaces
+                                </div>
+                                <div *ngIf="fc['password'].errors['noNumber']">&#8226; Password must contain at least
+                                    one number
+                                </div>
+                                <div *ngIf="fc['password'].errors['noUppercase']">&#8226; Password must contain at least
+                                    one
+                                    uppercase letter</div>
+                                <div *ngIf="fc['password'].errors['noLowercase']">&#8226; Password must contain at least
+                                    one
+                                    lowercase letter</div>
+                                <div *ngIf="fc['password'].errors['pattern']">&#8226; Password must contain at least one special
+                                    character</div>
+                            </div>
+                        </div>
+
+                        <!-- Toggle Visibility -->
+                        <!-- <div class="form-group">
+                            <button type="button" class="btn btn-sm btn-outline-secondary"
+                                (click)="showPassword = !showPassword">
+                                {{ showPassword ? 'Hide' : 'Show' }} Password
+                            </button>
+                        </div> -->
+
+                        <button class="btn-theme btn-block" [disabled]="loginForm.invalid">Login</button>
+                    </form>
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-3"></div>
+
+    </div>
+</div>

@@ -1,0 +1,127 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h3 class="text-theme-primary"> {{formStatus}} Post </h3>
+            <p class="mb-5"> You can {{formStatus}} posts here </p>
+        </div>
+    </div>
+
+    <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+
+        <div class="row">
+
+            <div class="col-md-7">
+
+                <div class="card shadow-effect">
+
+                    <div class="card-body">
+
+                        <div class="form-group">
+                            <label>Title</label>
+                            <input type="text" class="form-control" formControlName="title"
+                                [ngClass]="{'is-invalid': fc['title'].touched && fc['title'].invalid}" />
+
+                            <div *ngIf="fc['title'].touched && getErrorMessage('title')" class="alert alert-danger">
+                                {{ getErrorMessage('title') }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for=""> Permalink </label>
+                            <input type="text" class="form-control" formControlName="permalink" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for=""> Excerpt </label>
+                            <textarea cols="30" rows="10" class="form-control" formControlName="excerpt"
+                                [ngClass]="{ 'is-invalid': fc['excerpt'].touched && fc['excerpt'].invalid }"></textarea>
+
+                            <div *ngIf="fc['excerpt'].touched && getErrorMessage('excerpt')" class="alert alert-danger">
+                                {{ getErrorMessage('excerpt') }}
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-5">
+
+                <div class="card">
+
+                    <div class="card-body shadow-effect">
+
+                        <div class="form-group">
+                            <label> Please Select a Post Category</label>
+                            <select class="form-control" formControlName="category"
+                                [ngClass]="{ 'is-invalid': fc['category'].touched && fc['category'].invalid }">
+
+                                <option value="" disabled selected> Please select a category </option>
+
+                                <option *ngFor="let category of categories"
+                                    value="{{category.id}}-{{category.category}}"> {{ category.category}}</option>
+
+                            </select>
+
+                            <div *ngIf="fc['category'].touched && getErrorMessage('category')"
+                                class="alert alert-danger">
+                                {{ getErrorMessage('category') }}
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label> Post Image </label>
+                            <img [src]="imgSrc" alt="Preview" class="form-control img-fluid img-preview">
+                            <input type="file" class="form-control" accept="image/*" (change)="showPreview($event)"
+                                formControlName="postImg">
+
+                            <div *ngIf="fc['postImg'].touched && getErrorMessage('postImg')" class="alert alert-danger">
+                                {{ getErrorMessage('postImg') }}
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <div class="row mt-3 mb-5">
+            <div class="col-md-12">
+                <div class="card shadow-effect">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label> Content </label>
+                            <angular-editor placeholder="Add your content here" formControlName="content"
+                                [ngClass]="{ 'is-invalid': fc['content'].touched && fc['content'].invalid }"></angular-editor>
+                        </div>
+
+                        <div *ngIf="fc['content'].touched && getErrorMessage('content')" class="alert alert-danger">
+                            {{ getErrorMessage('content') }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 text-center mt-5">
+                <button class="btn btn-info bg-theme" [disabled]="postForm.invalid"> {{formStatus}} Post </button>
+                <button class="btn btn-warning ml-3" routerLink="/posts"> Back to Posts </button>
+            </div>
+        </div>
+
+    </form>
+
+
+    <!-- <ik-upload [useUniqueFileName]="true" (onError)="handleUploadError($event)" (onSuccess)="handleUploadSuccess($event)"
+        [authenticator]="authenticator">
+    </ik-upload> -->
+
+
+
+
+</div>

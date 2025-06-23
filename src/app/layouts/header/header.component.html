@@ -3,7 +3,7 @@
         <a href="" class="site-logo">BLOOM</a>
     </div>
 
-    <div class="col-md-9" *ngIf="!user && isLoginPage"></div>
+    <div class="col-md-9" *ngIf="isLoginPage"></div>
 
     <div class="container justify-content-end col-md-6" *ngIf="user && !isLoginPage">
         <a href="" class="mr-3">Welcome {{user.email}}</a>

@@ -1,13 +1,13 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { User } from '@angular/fire/auth';
 import { AuthService } from '../../services/auth.service';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { filter } from 'rxjs';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-header',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })

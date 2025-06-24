@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
+import { ScrollService } from './services/scroll.service';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +11,5 @@ import { FooterComponent } from './layouts/footer/footer.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'ang-blog-dashboard';
+  private scrollService = inject(ScrollService)
 }

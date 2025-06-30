@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { Post } from '../models/post';
 import { collectionData, docData, Firestore } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
-import { addDoc, collection, deleteDoc, doc, updateDoc } from '@firebase/firestore';
+import { addDoc, collection, deleteDoc, doc, orderBy, query, updateDoc } from '@firebase/firestore';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -141,7 +141,8 @@ uploadImageAndCreatePost(postFormValue: any, selectedImg?: File, existingImg?: {
 
   loadData(): Observable<any[]> {
     const postsRef = collection(this.firestore, 'posts');
-    return collectionData(postsRef, { idField: 'id' });
+    const postsQuery = query(postsRef, orderBy('createdAt', 'desc'));
+    return collectionData(postsQuery, { idField: 'id' });
   }
 
   loadOneData(id: string) {

@@ -1,7 +1,6 @@
 import { CanActivateFn, Router } from '@angular/router';
 import { inject } from '@angular/core';
 import { AuthService } from './auth.service';
-import { user } from '@angular/fire/auth';
 import { filter, map, switchMap, take } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 
@@ -32,7 +31,7 @@ export const authGuard: CanActivateFn = (route, state) => {
         if (user) {
           return true;
         } else {
-          toastr.warning('You don`t have permission to access the page');
+          toastr.warning('You don`t have permission to access the page. Kindly Login!');
           router.navigate(['/login']);
           return false;
         }

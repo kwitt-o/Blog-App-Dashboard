@@ -8,6 +8,6 @@
 
     <div class="user container justify-content-end col-md-9" *ngIf="user && !isLoginPage">
         <a href="" class="mr-3">Welcome {{user.email}}</a>
-        <button class="btn btn-sm btn-info bg-secondary-theme text-theme-primary" (click)="onLogOut()">Logout</button>
+        <button class="btn btn-login btn-sm btn-info text-theme-primary" (click)="onLogOut()">Logout</button>
     </div>
 </header>

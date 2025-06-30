@@ -14,6 +14,8 @@ export class AuthService {
   private userSubject = new BehaviorSubject<User | null>(null);
   $user = this.userSubject.asObservable();
   isLoggedInGuard: boolean = false;
+  private authChecked = new BehaviorSubject<boolean>(false);
+  authChecked$ = this.authChecked.asObservable();
 
   constructor() {
     this.loadUser();
@@ -30,6 +32,8 @@ export class AuthService {
         this.userSubject.next(null);
         localStorage.removeItem('User');
       }
+
+       this.authChecked.next(true);
     });
   }
 

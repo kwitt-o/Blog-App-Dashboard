@@ -76,15 +76,3 @@ export class LoginComponent implements OnInit {
     this.authService.login(email, password);
   }
 }
-
-  // if (this.loginForm.valid) {
-    //   this.authService.login(email, password)
-    //     .then(userCredential => {
-    //       console.log('Logged in:', userCredential.user);
-    //     })
-    //     .catch(error => {
-    //       console.error('Login error:', error.message);
-    //     });
-    // } else {
-    //   this.loginForm.markAllAsTouched();
-    // }

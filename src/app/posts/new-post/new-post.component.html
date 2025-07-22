@@ -17,7 +17,7 @@
                     <div class="card-body">
 
                         <div class="form-group">
-                            <label>Title</label>
+                            <label>Title <span class="required">*</span></label>
                             <input type="text" class="form-control" formControlName="title"
                                 [ngClass]="{'is-invalid': fc['title'].touched && fc['title'].invalid}" />
 
@@ -27,12 +27,12 @@
                         </div>
 
                         <div class="form-group">
-                            <label for=""> Permalink </label>
+                            <label for=""> Permalink <span class="required">*</span></label>
                             <input type="text" class="form-control" formControlName="permalink" readonly>
                         </div>
 
                         <div class="form-group">
-                            <label for=""> Excerpt </label>
+                            <label for=""> Excerpt <span class="required">*</span></label>
                             <textarea cols="30" rows="10" class="form-control" formControlName="excerpt"
                                 [ngClass]="{ 'is-invalid': fc['excerpt'].touched && fc['excerpt'].invalid }"></textarea>
 
@@ -54,7 +54,7 @@
                     <div class="card-body shadow-effect">
 
                         <div class="form-group">
-                            <label> Please Select a Post Category</label>
+                            <label> Please Select a Post Category <span class="required">*</span></label>
                             <select class="form-control" formControlName="category"
                                 [ngClass]="{ 'is-invalid': fc['category'].touched && fc['category'].invalid }">
 
@@ -72,7 +72,7 @@
 
                         </div>
                         <div class="form-group">
-                            <label> Post Image </label>
+                            <label> Post Image <span class="required">*</span></label>
                             <img [src]="imgSrc" alt="Preview" class="form-control img-fluid img-preview">
                             <input type="file" class="form-control" accept="image/*" (change)="showPreview($event)"
                                 formControlName="postImg">
@@ -96,7 +96,7 @@
                 <div class="card shadow-effect">
                     <div class="card-body">
                         <div class="form-group">
-                            <label> Content </label>
+                            <label> Content <span class="required">*</span></label>
                             <angular-editor placeholder="Add your content here" formControlName="content"
                                 [ngClass]="{ 'is-invalid': fc['content'].touched && fc['content'].invalid }"></angular-editor>
                         </div>

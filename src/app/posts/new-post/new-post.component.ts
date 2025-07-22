@@ -132,73 +132,29 @@ export class NewPostComponent implements OnInit {
     }
   }
 
+  async onSubmit() {
+    try {
+      // ✅ When editing, use existing image if no new file is selected
+      const post = await this.postService.uploadImageAndCreatePost(
+        this.postForm.value,
+        this.selectedImg,
+        this.formStatus === 'Edit' && this.post
+          ? { url: this.post.postImgPath, fileId: this.post.imageFileId } // ✅ Existing image fallback
+          : undefined
+      );
 
+      if (this.formStatus === 'Edit' && this.postId) {
+        await this.postService.updatePostData(this.postId, post);
+      } else {
+        await this.postService.savePost(post);
+      }
 
-  // async onSubmit(){
-  //   try {
-  //     const post = await this.postService.uploadImageAndCreatePost(this.postForm.value, this.selectedImg);
-
-  //     if (this.formStatus === 'Edit' && this.postId) {
-  //         await this.postService.updatePostData(this.postId, post)
-  //     } else {
-  //       await this.postService.savePost(post);
-  //     }
-
-  //     this.postForm.reset();
-  //     this.imgSrc = 'assets/images/img-placeholder.jpeg';
-  //     this.selectedImg = '';
-  //   } catch (error) {
-  //     console.error('Error submitting post', error);
-  //   }
-  // }
-
-//   async onSubmit() {
-//   try {
-//     const post = await this.postService.uploadImageAndCreatePost(
-//       this.postForm.value,
-//       this.selectedImg,
-//       this.formStatus === 'Edit' && this.post
-//         ? { url: this.post.postImgPath, fileId: this.post.imageFileId }
-//         : undefined
-//     );
-
-//     if (this.formStatus === 'Edit' && this.postId) {
-//       await this.postService.updatePostData(this.postId, post);
-//     } else {
-//       await this.postService.savePost(post);
-//     }
-
-//     this.postForm.reset();
-//     this.imgSrc = 'assets/images/img-placeholder.jpeg';
-//     this.selectedImg = '';
-//   } catch (error) {
-//     console.error('Error submitting post', error);
-//   }
-// }
-
-async onSubmit() {
-  try {
-    // ✅ When editing, use existing image if no new file is selected
-    const post = await this.postService.uploadImageAndCreatePost(
-      this.postForm.value,
-      this.selectedImg,
-      this.formStatus === 'Edit' && this.post
-        ? { url: this.post.postImgPath, fileId: this.post.imageFileId } // ✅ Existing image fallback
-        : undefined
-    );
-
-    if (this.formStatus === 'Edit' && this.postId) {
-      await this.postService.updatePostData(this.postId, post);
-    } else {
-      await this.postService.savePost(post);
+      this.postForm.reset();
+      this.imgSrc = 'assets/images/img-placeholder.jpeg';
+      this.selectedImg = '';
+    } catch (error) {
+      console.error('Error submitting post', error);
     }
-
-    this.postForm.reset();
-    this.imgSrc = 'assets/images/img-placeholder.jpeg';
-    this.selectedImg = '';
-  } catch (error) {
-    console.error('Error submitting post', error);
   }
-}
 
 }

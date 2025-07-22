@@ -16,8 +16,8 @@ export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideClientHydration(withEventReplay()), provideFirebaseApp(() => initializeApp(environment.firebaseConfig)), // Initialize Firebase
   provideFirestore(() => getFirestore()), provideAuth(() => getAuth()), provideAnimations(), provideToastr(), provideHttpClient(), importProvidersFrom(
     ImagekitioAngularModule.forRoot({
-      urlEndpoint: 'https://ik.imagekit.io/kwitt',
-      publicKey: 'public_j9Q5MuMYw5U55rrTDFU11ahhIk4=',
+      urlEndpoint: 'https://ik.imagekit.io/kwittblog',
+      publicKey: 'public_F4fq7AcQTvVFa63Obe/llLSl3js=',
     })
   ),],
 };

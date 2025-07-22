@@ -15,57 +15,7 @@ export class PostsService {
   private firestore = inject(Firestore);
   private toastr = inject(ToastrService);
   private router = inject(Router);
-
-  // uploadImageAndCreatePost(postFormValue: any, selectedImg: File): Promise<Post> {
-  //   return new Promise(async (resolve, reject) => {
-  //     try {
-  //       // 1. Get auth
-  //       const authRes = await fetch('http://localhost:3000/auth');
-  //       const { signature, expire, token } = await authRes.json();
-
-  //       // 2. Upload
-  //       const formData = new FormData();
-  //       formData.append('file', selectedImg);
-  //       formData.append('fileName', selectedImg.name);
-  //       formData.append('publicKey', 'public_j9Q5MuMYw5U55rrTDFU11ahhIk4=');
-  //       formData.append('signature', signature);
-  //       formData.append('expire', expire.toString());
-  //       formData.append('token', token);
-
-  //       const uploadRes = await fetch('https://upload.imagekit.io/api/v1/files/upload', {
-  //         method: 'POST',
-  //         body: formData
-  //       });
-
-  //       const uploadResult = await uploadRes.json();
-  //       const imageUrl = uploadResult.url;
-  //       const imageFileId = uploadResult.fileId;
-
-  //       // 3. Build post
-  //       const [categoryId, categoryName] = postFormValue.category.split('-');
-
-  //       const postData: Post = {
-  //         title: postFormValue.title,
-  //         permalink: postFormValue.permalink,
-  //         category: { categoryId, category: categoryName },
-  //         postImgPath: imageUrl,
-  //         imageFileId: imageFileId,
-  //         excerpt: postFormValue.excerpt,
-  //         content: postFormValue.content,
-  //         isFeatured: false,
-  //         views: 0,
-  //         status: 'new',
-  //         createdAt: new Date()
-  //       };
-
-  //       resolve(postData);
-  //     } catch (error) {
-  //       reject(error);
-  //     }
-  //   });
-  // }
-
-//  
+  
 uploadImageAndCreatePost(postFormValue: any, selectedImg?: File, existingImg?: { url: string, fileId: string }): Promise<Post> {
   return new Promise(async (resolve, reject) => {
     try {
@@ -76,14 +26,14 @@ uploadImageAndCreatePost(postFormValue: any, selectedImg?: File, existingImg?: {
         // ✅ New image selected, upload to ImageKit
 
         // 1. Auth from backend
-        const authRes = await fetch('https://imagekit-auth-server-0oml.onrender.com/auth');
+        const authRes = await fetch('https://imagekit-auth-server-kegi.onrender.com/auth');
         const { signature, expire, token } = await authRes.json();
 
         // 2. Upload image
         const formData = new FormData();
         formData.append('file', selectedImg);
-        formData.append('fileName', selectedImg.name); // ❌ This was crashing when selectedImg was undefined
-        formData.append('publicKey', 'public_j9Q5MuMYw5U55rrTDFU11ahhIk4=');
+        formData.append('fileName', selectedImg.name);
+        formData.append('publicKey', 'public_F4fq7AcQTvVFa63Obe/llLSl3js=');
         formData.append('signature', signature);
         formData.append('expire', expire.toString());
         formData.append('token', token);

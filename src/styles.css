@@ -26,7 +26,6 @@ html body {
 }
 
 .nav-link {
-    /* text-transform: uppercase; */
     font-size: 17px;
     color: var(--primary-color);
 }
@@ -53,7 +52,6 @@ input[type=email],
 input[type=password] {
     height: 60px;
     padding-left: 20px;
-    /* font-size: 13px; */
     width: 100%;
 }
 
@@ -73,4 +71,8 @@ input[type=password] {
     color: #FFFF;
     background-color: var(--primary-color);
     border-radius: 4px;
+}
+
+.required {
+    color: red;
 }

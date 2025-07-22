@@ -1,11 +1,11 @@
 export const environment = {
     production: true,
     firebaseConfig: {
-        apiKey: "AIzaSyDPJOGkzUN6urfjN-4h9OUJinb2foGspt4",
-        authDomain: "bloom-blog-2e5a5.firebaseapp.com",
-        projectId: "bloom-blog-2e5a5",
-        storageBucket: "bloom-blog-2e5a5.firebasestorage.app",
-        messagingSenderId: "526527106970",
-        appId: "1:526527106970:web:64feab3e8e62922c9c7423",
+        apiKey: "AIzaSyD9reulqqiTJ-IKuokv3qxTP2zubjexc7s",
+        authDomain: "kwitt-blog-a.firebaseapp.com",
+        projectId: "kwitt-blog-a",
+        storageBucket: "kwitt-blog-a.firebasestorage.app",
+        messagingSenderId: "439690625748",
+        appId: "1:439690625748:web:2b8c140a8acd1f4df77141",
     }
 };

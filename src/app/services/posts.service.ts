@@ -128,7 +128,7 @@ uploadImageAndCreatePost(postFormValue: any, selectedImg?: File, existingImg?: {
     try {
       // 1. Delete image from ImageKit
       if (imageFileId) {
-        await fetch('https://imagekit-auth-server-0oml.onrender.com/delete-image', {
+        await fetch('https://imagekit-auth-server-kegi.onrender.com/delete-image', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
